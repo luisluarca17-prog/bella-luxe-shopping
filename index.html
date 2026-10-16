@@ -7,7 +7,42 @@
 <title>BELLA LUXE SHOPPING | Catálogo de prueba</title>
 <style>
 :root{--black:#171514;--gold:#c6a15b;--cream:#faf7f0;--muted:#746d62;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--black)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body
+<!-- Botón de pedidos por WhatsApp: BELLA LUXE SHOPPING -->
+<a id="whatsapp-orders"
+   href="#"
+   target="_blank"
+   rel="noopener noreferrer"
+   style="position:fixed;right:20px;bottom:20px;z-index:9999;
+   background:#171514;color:#D8B76A;border:1px solid #C6A15B;
+   padding:15px 20px;border-radius:30px;text-decoration:none;
+   font-family:Arial,sans-serif;font-weight:bold;
+   box-shadow:0 4px 14px #0003;">
+  ☎ Pedir por WhatsApp
+</a>
+
+<script>
+(function () {
+  const numero = "50230305348";
+
+  const mensaje = [
+    "Hola, ¡Bienvenida/o a BELLA LUXE SHOPPING! Espero te encuentres bien.",
+    "",
+    "Selecciona una opción escribiendo el número:",
+    "1. Realizar pedido",
+    "2. Cotizar precios",
+    "3. Información de tu pedido",
+    "4. Servicio al cliente",
+    "5. Dudas y preguntas",
+    "6. Formas de pago"
+  ].join("\n");
+
+  document.getElementById("whatsapp-orders").href =
+    "https://wa.me/" + numero + "?text=" +
+    encodeURIComponent(mensaje);
+})();
+</script>
+{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--black)}
 .top{background:var(--black);color:#f4dfad;text-align:center;padding:9px 12px;font-size:12px;letter-spacing:1.4px}
 header{background:#fff;border-bottom:1px solid #e9e0d0;position:sticky;top:0;z-index:5}
 .nav{max-width:1150px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
