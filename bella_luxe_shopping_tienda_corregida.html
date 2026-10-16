@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BELLA LUXE SHOPPING: catálogo de demostración de joyería, belleza y accesorios.">
+<title>BELLA LUXE SHOPPING | Catálogo</title>
+<style>
+:root{--black:#171514;--gold:#c6a15b;--cream:#faf7f0;--muted:#746d62;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--black)}
+header{background:var(--white);border-bottom:1px solid #e9e0d0;position:sticky;top:0;z-index:5}
+.nav{max-width:1150px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:10px}
+.mark{width:43px;height:43px;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-family:Georgia,serif;font-size:19px}
+.brand strong{display:block;letter-spacing:2px;font-size:14px}
+.brand small{display:block;color:var(--muted);letter-spacing:2px;font-size:9px;margin-top:4px}
+nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+button,.btn{border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:var(--black);color:white;border-radius:5px;font-weight:bold}
+button.gold,.btn.gold{background:var(--gold);color:var(--black)}
+button.outline,.btn.outline{background:transparent;color:var(--black);border:1px solid #d7c8aa}
+.hero{background:linear-gradient(115deg,#171514 0%,#29231b 55%,#51412a 100%);color:white;padding:62px 20px}
+.hero-inner{max-width:1150px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
+.eyebrow{color:#e2c27e;letter-spacing:3px;font-size:11px;font-weight:bold}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(34px,5vw,58px);line-height:1.08;margin:18px 0}
+.hero p{max-width:490px;color:#e7dfd1;line-height:1.7}
+.hero-art{min-height:240px;border:1px solid #b99552;border-radius:48% 48% 4px 4px;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at center,#4c3b24,#201b15 70%);padding:20px}
+.hero-art b{font-family:Georgia,serif;font-size:clamp(48px,7vw,80px);color:#e6c981;font-weight:400}
+.hero-art small{display:block;letter-spacing:4px;font-size:10px;margin-top:10px}
+section{max-width:1150px;margin:auto;padding:42px 20px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:22px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:32px;margin:0}
+.sub{color:var(--muted);line-height:1.6}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filter{background:white;color:var(--black);border:1px solid #e2d8c7}
+.filter.active{background:var(--black);color:white}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.product{background:white;border:1px solid #eee5d7;overflow:hidden;display:flex;flex-direction:column}
+.pic{height:170px;display:grid;place-items:center;background:linear-gradient(135deg,#eee5d4,#faf7f0);font-size:54px}
+.info{padding:15px;display:flex;flex-direction:column;gap:9px;flex:1}
+.tag{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#92713b}
+.info h3{font-size:15px;margin:0}
+.info p{font-size:13px;color:var(--muted);line-height:1.5;margin:0;flex:1}
+.price{font-size:19px;font-weight:bold}
+.notice{background:#f0e6d2;border-left:3px solid var(--gold);padding:14px 16px;color:#5e5038;line-height:1.6;margin-top:22px}
+footer{background:var(--black);color:#eee;padding:28px 20px;text-align:center}
+footer p{color:#cfc6b8;font-size:13px;line-height:1.7}
+.overlay{position:fixed;inset:0;background:#0008;z-index:10;display:none}
+.overlay.show{display:block}
+.drawer{position:fixed;z-index:11;right:0;top:0;height:100%;width:min(430px,100%);background:white;padding:22px;overflow:auto;transform:translateX(105%);transition:transform .2s}
+.drawer.show{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cart-line{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid #eee}
+.cart-line small{display:block;color:var(--muted);margin-top:4px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty button{padding:5px 10px}
+.total{display:flex;justify-content:space-between;font-size:20px;font-weight:bold;padding:18px 0}
+label{font-size:13px;font-weight:bold;display:block;margin:13px 0 6px}
+input,textarea{width:100%;padding:12px;border:1px solid #d9d0c2;border-radius:5px;font:inherit}
+textarea{min-height:80px;resize:vertical}
+.whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:9;background:var(--black);color:#e6c981;border:1px solid var(--gold);padding:14px 18px;border-radius:30px;text-decoration:none;font-weight:bold;box-shadow:0 4px 14px #0003}
+.empty{color:var(--muted);line-height:1.6;padding:12px 0}
+@media(max-width:850px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-inner{grid-template-columns:1fr}.hero-art{min-height:180px}.nav{align-items:flex-start}.brand strong{font-size:12px}}
+@media(max-width:520px){.products{grid-template-columns:1fr 1fr;gap:10px}.pic{height:125px;font-size:42px}.info{padding:11px}.nav{flex-direction:column}.hero{padding:42px 20px}section{padding:32px 14px}.section-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand"><div class="mark">BL</div><div><strong>BELLA LUXE SHOPPING</strong><small>BEAUTY · JEWELRY · STYLE</small></div></div>
+    <nav><a class="btn outline" href="#catalogo">Catálogo</a><button class="gold" id="openCart">🛍️ Ver bolsa (<span id="cartCount">0</span>)</button></nav>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <div class="hero-inner">
+      <div><div class="eyebrow">DETALLES QUE ENAMORAN</div><h1>Tu estilo, tu esencia, tu lujo.</h1><p>Descubre una selección de joyería, maquillaje, cuidado de la piel y accesorios. Explora el catálogo y envíanos tu pedido por WhatsApp.</p><a class="btn gold" href="#catalogo">Explorar catálogo</a></div>
+      <div class="hero-art"><div><b>BL</b><small>BELLA LUXE SHOPPING</small></div></div>
+    </div>
+  </div>
+  <section id="catalogo">
+    <div class="section-head"><div><h2>Catálogo de productos</h2><div class="sub">Productos de ejemplo para probar tu tienda.</div></div><div class="sub">Precios en quetzales (Q)</div></div>
+    <div class="filters" id="filters"></div>
+    <div class="products" id="products"></div>
+    <div class="notice"><strong>Catálogo de demostración:</strong> los artículos y precios son ejemplos. Confirma disponibilidad, precio y entrega por WhatsApp antes de comprar.</div>
+  </section>
+  <section id="contacto"><h2>¿Necesitas ayuda?</h2><p class="sub">Escríbenos por WhatsApp para cotizar, consultar tu pedido o conocer las formas de pago.</p><a class="btn" id="contactButton" target="_blank" rel="noopener noreferrer">Contactar por WhatsApp</a></section>
+</main>
+<footer><div class="brand" style="justify-content:center"><div class="mark">BL</div><div><strong>BELLA LUXE SHOPPING</strong><small>BEAUTY · JEWELRY · STYLE</small></div></div><p>Gracias por visitar nuestra tienda.<br>Catálogo de demostración · Guatemala</p></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Bolsa de compras">
+  <div class="drawer-head"><h2>Tu bolsa</h2><button class="outline" id="closeCart">Cerrar ✕</button></div>
+  <div id="cartItems"></div>
+  <div class="total"><span>Total estimado</span><span id="cartTotal">Q0.00</span></div>
+  <label for="customerName">Tu nombre</label><input id="customerName" placeholder="Nombre para el pedido">
+  <label for="customerNote">Nota (opcional)</label><textarea id="customerNote" placeholder="Talla, color, variante o consulta"></textarea>
+  <p class="sub">El pedido se enviará a WhatsApp para confirmar disponibilidad, entrega y pago. Este sitio no procesa tarjetas ni cobra automáticamente.</p>
+  <button class="gold" id="sendOrder" style="width:100%">Enviar pedido por WhatsApp</button>
+</aside>
+<a class="whatsapp-float" id="whatsappOrders" target="_blank" rel="noopener noreferrer">☎ Pedir por WhatsApp</a>
+
+<script>
+(function(){
+"use strict";
+const PHONE="50230305348";
+const WELCOME=[
+"Hola, ¡Bienvenida/o a BELLA LUXE SHOPPING! Espero te encuentres bien.",
+"",
+"Selecciona una opción escribiendo el número:",
+"1. Realizar pedido",
+"2. Cotizar precios",
+"3. Información de tu pedido",
+"4. Servicio al cliente",
+"5. Dudas y preguntas",
+"6. Formas de pago"
+].join("\n");
+const products=[
+{id:1,name:"Aretes dorados clásicos",category:"Joyería",price:85,emoji:"✨",description:"Diseño delicado para ocasiones especiales."},
+{id:2,name:"Collar estilo minimalista",category:"Joyería",price:120,emoji:"◇",description:"Una pieza elegante para combinar."},
+{id:3,name:"Set de maquillaje",category:"Belleza",price:145,emoji:"🌸",description:"Ejemplo de set para tu colección."},
+{id:4,name:"Labial tono nude",category:"Belleza",price:55,emoji:"💄",description:"Producto de muestra para el catálogo."},
+{id:5,name:"Accesorio de moda",category:"Accesorios",price:65,emoji:"♡",description:"Un detalle para tu look diario."},
+{id:6,name:"Rutina de cuidado de la piel",category:"Cuidado de la piel",price:190,emoji:"❀",description:"Ejemplo de productos para cuidado personal."},
+{id:7,name:"Bolso elegante",category:"Accesorios",price:175,emoji:"👜",description:"Diseño de muestra para esta tienda."},
+{id:8,name:"Anillo dorado delicado",category:"Joyería",price:95,emoji:"○",description:"Estilo clásico para combinar."}
+];
+let cart=[];
+let active="Todos";
+const money=n=>"Q"+n.toFixed(2);
+function makeWhatsApp(message){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(message)}
+document.getElementById("whatsappOrders").href=makeWhatsApp(WELCOME);
+document.getElementById("contactButton").href=makeWhatsApp(WELCOME);
+function renderFilters(){
+ const categories=["Todos",...new Set(products.map(p=>p.category))];
+ document.getElementById("filters").innerHTML=categories.map(c=>`<button class="filter ${c===active?"active":""}" data-category="${c}">${c}</button>`).join("");
+ document.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.category;renderFilters();renderProducts()}));
+}
+function renderProducts(){
+ const list=products.filter(p=>active==="Todos"||p.category===active);
+ document.getElementById("products").innerHTML=list.map(p=>`<article class="product"><div class="pic" aria-hidden="true">${p.emoji}</div><div class="info"><span class="tag">${p.category}</span><h3>${p.name}</h3><p>${p.description}</p><div class="price">${money(p.price)}</div><button class="gold" data-add="${p.id}">Agregar a la bolsa</button></div></article>`).join("");
+ document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(Number(b.dataset.add))));
+}
+function addToCart(id){const row=cart.find(x=>x.id===id);if(row)row.qty++;else cart.push({id,qty:1});renderCart();openCart()}
+function renderCart(){
+ document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{const p=products.find(y=>y.id===x.id);return `<div class="cart-line"><div><strong>${p.name}</strong><small>${money(p.price)} c/u</small><div class="qty"><button class="outline" data-minus="${p.id}" aria-label="Restar">−</button><span>${x.qty}</span><button class="outline" data-plus="${p.id}" aria-label="Sumar">+</button></div></div><strong>${money(p.price*x.qty)}</strong></div>`}).join(""):'<p class="empty">Tu bolsa está vacía. Agrega productos del catálogo.</p>';
+ document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0));
+ document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(Number(b.dataset.minus),-1)));
+ document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(Number(b.dataset.plus),1)));
+}
+function changeQty(id,delta){const row=cart.find(x=>x.id===id);if(!row)return;row.qty+=delta;if(row.qty<=0)cart=cart.filter(x=>x.id!==id);renderCart()}
+function openCart(){document.getElementById("overlay").classList.add("show");document.getElementById("drawer").classList.add("show")}
+function closeCart(){document.getElementById("overlay").classList.remove("show");document.getElementById("drawer").classList.remove("show")}
+document.getElementById("openCart").addEventListener("click",openCart);
+document.getElementById("closeCart").addEventListener("click",closeCart);
+document.getElementById("overlay").addEventListener("click",closeCart);
+document.getElementById("sendOrder").addEventListener("click",()=>{
+ if(!cart.length){alert("Agrega al menos un producto primero.");return}
+ const name=document.getElementById("customerName").value.trim();
+ const note=document.getElementById("customerNote").value.trim();
+ const lines=cart.map(x=>{const p=products.find(y=>y.id===x.id);return `• ${p.name} x${x.qty} — ${money(p.price*x.qty)}`});
+ const total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
+ const message=["Hola, quiero realizar un pedido en BELLA LUXE SHOPPING.","",name?"Nombre: "+name:"",...lines,"","Total estimado: "+money(total),note?"Nota: "+note:"","Por favor, confirmen disponibilidad, entrega y formas de pago."].filter(Boolean).join("\n");
+ window.open(makeWhatsApp(message),"_blank","noopener");
+});
+function renderFiltersAndProducts(){renderFilters();renderProducts();renderCart()}
+renderFiltersAndProducts();
+})();
+</script>
+</body>
+</html>
